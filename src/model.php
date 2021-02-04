@@ -37,7 +37,7 @@ abstract class model
         $sql = 'INSERT INTO ' . strtolower($this->getRealClassName()) . ' (' . implode(', ', array_keys($cols)) . ') 
         VALUES (' . implode(', ', $values) . ')';
         var_dump($sql);
-        var_dump(get_object_vars($this));
+
 
     }
 
