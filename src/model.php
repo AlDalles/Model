@@ -13,7 +13,7 @@ abstract class model
 
     }
 
-    public function getRealClassName()
+    protected function getRealClassName()
     {
 
 
