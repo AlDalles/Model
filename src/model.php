@@ -15,10 +15,12 @@ abstract class model
 
     protected function getRealClassName()
     {
+            $position = strrpos(static::class, '\\');
 
-
-        return substr(static::class, (strrpos(static::class, '\\')) + 1);
-
+        if ($position) {
+            return substr(static::class, (Sposition) + 1);
+        }
+        else return static::class;
     }
 
 
