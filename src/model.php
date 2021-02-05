@@ -7,7 +7,7 @@ namespace Hillel;
 abstract class model
 {
 
-    protected function getID()
+    public function getID()
     {
         $id = array_values(get_object_vars($this))[0];
 
