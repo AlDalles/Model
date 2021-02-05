@@ -7,9 +7,9 @@ namespace Hillel;
 abstract class model
 {
 
-    public function getID()
+    public function getID():int
     {
-        $id = array_values(get_object_vars($this))[0];
+        return array_values(get_object_vars($this))[0];
 
     }
 
