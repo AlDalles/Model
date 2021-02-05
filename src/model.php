@@ -18,7 +18,7 @@ abstract class model
             $position = strrpos(static::class, '\\');
 
         if ($position) {
-            return substr(static::class, (Sposition) + 1);
+            return substr(static::class, ($position) + 1);
         }
         else return static::class;
     }
