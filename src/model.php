@@ -8,8 +8,7 @@ abstract class model
 {
 
 
-
-    public function getID():int
+    public function getID(): int
     {
         return array_values(get_object_vars($this))[0];
 
@@ -17,12 +16,11 @@ abstract class model
 
     protected function getRealClassName()
     {
-            $position = strrpos(static::class, '\\');
+        $position = strrpos(static::class, '\\');
 
         if ($position) {
             return substr(static::class, ($position) + 1);
-        }
-        else return static::class;
+        } else return static::class;
     }
 
 
@@ -56,15 +54,13 @@ abstract class model
     {
 
         $cols = get_object_vars($this);
-        //var_dump ($cols);
         $mainPart = '';
-        foreach ($cols as $key => $value)
-        {
-            if($key!='id')
-            $mainPart .= $key." = :".$value.", ";
+        foreach ($cols as $key => $value) {
+            if ($key != 'id')
+                $mainPart .= $key . " = :" . $value . ", ";
         }
 
-        $sql = 'UPDATE ' . strtolower($this->getRealClassName()) .' SET '. $mainPart. ' WHERE id = ' . $this->getID();
+        $sql = 'UPDATE ' . strtolower($this->getRealClassName()) . ' SET ' . $mainPart . ' WHERE id = ' . $this->getID();
         var_dump($sql);
 
 
