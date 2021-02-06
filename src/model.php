@@ -19,8 +19,8 @@ abstract class model
         $position = strrpos(static::class, '\\');
 
         if ($position) {
-            return substr(static::class, ($position) + 1);
-        } else return static::class;
+            return strtolower(substr(static::class, ($position) + 1));
+        } else return strtolower(static::class);
     }
 
 
@@ -36,7 +36,7 @@ abstract class model
 
         $values = array_map(fn($item) => ':' . $item, array_values($cols));
 
-        $sql = 'INSERT INTO ' . strtolower($this->getRealClassName()) . ' (' . implode(', ', array_keys($cols)) . ') 
+        $sql = 'INSERT INTO ' . $this->getRealClassName() . ' (' . implode(', ', array_keys($cols)) . ') 
         VALUES (' . implode(', ', $values) . ')';
         var_dump($sql);
 
@@ -60,7 +60,7 @@ abstract class model
                 $mainPart .= $key . " = :" . $value . ", ";
         }
 
-        $sql = 'UPDATE ' . strtolower($this->getRealClassName()) . ' SET ' . $mainPart . ' WHERE id = ' . $this->getID();
+        $sql = 'UPDATE ' . $this->getRealClassName() . ' SET ' . $mainPart . ' WHERE id = ' . $this->getID();
         var_dump($sql);
 
 
