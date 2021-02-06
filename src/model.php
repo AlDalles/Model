@@ -7,6 +7,8 @@ namespace Hillel;
 abstract class model
 {
 
+
+
     public function getID():int
     {
         return array_values(get_object_vars($this))[0];
@@ -52,7 +54,17 @@ abstract class model
 
     public function update()
     {
-        $sql = 'UPDATE ' . strtolower($this->getRealClassName()) . ' set name = :' . array_values(get_object_vars($this))[1] . ', email = :' . array_values(get_object_vars($this))[2] . ' WHERE id = ' . $this->getID();
+
+        $cols = get_object_vars($this);
+        //var_dump ($cols);
+        $mainPart = '';
+        foreach ($cols as $key => $value)
+        {
+            if($key!='id')
+            $mainPart .= $key." = :".$value.", ";
+        }
+
+        $sql = 'UPDATE ' . strtolower($this->getRealClassName()) .' SET '. $mainPart. ' WHERE id = ' . $this->getID();
         var_dump($sql);
 
 
