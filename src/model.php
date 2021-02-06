@@ -64,7 +64,7 @@ abstract class model
             $mainPart .= $key." = :".$value.", ";
         }
 
-        $sql = 'UPDATE ' . strtolower($this->getRealClassName()) .' SET '. $mainPart. ' WHERE id = ' . $this->getID();
+        $sql = 'UPDATE ' . strtolower($this->getRealClassName()) .' SET '.substr($mainPart, 0, iconv_strlen($mainPart)-2). ' WHERE id = ' . $this->getID();
         var_dump($sql);
 
 
